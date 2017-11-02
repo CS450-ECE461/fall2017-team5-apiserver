@@ -1,2 +1,2 @@
-<h1 align="center">Homely Backend</h1>
+<h1 align="center">SOJO Backend</h1>
 
