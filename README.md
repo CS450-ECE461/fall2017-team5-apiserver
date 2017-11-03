@@ -14,3 +14,5 @@ $ git clone git@github.com:CS450-ECE461/fall2017-team5-apiserver.git
 ```sh
 $ git clone https://github.com/CS450-ECE461/fall2017-team5-apiserver.git
 ```
+
+# [Workflow Standards](https://github.com/CS450-ECE461/fall2017-team5-apiserver/blob/master/docs/WORKFLOW.md)
