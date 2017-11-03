@@ -5,7 +5,7 @@
 <img src="https://travis-ci.org/CS450-ECE461/fall2017-team5-apiserver.svg?branch=staging" /></a>
 </p>
 
-# Downloading the Projelsct
+# Downloading the Project
 ###### SSH
 ```sh
 $ git clone git@github.com:CS450-ECE461/fall2017-team5-apiserver.git
