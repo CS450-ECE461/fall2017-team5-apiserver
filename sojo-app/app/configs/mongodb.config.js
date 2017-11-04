@@ -6,7 +6,7 @@ var blueprint = require ('@onehilltech/blueprint')
 module.exports = {
   connections: {
     $default: {
-      connstr: 'mongodb://localhost/sojo-api_' + blueprint.env,
+      connstr: 'mongodb://localhost/sojo-app_' + blueprint.env,
 
       options : {
         db: {
