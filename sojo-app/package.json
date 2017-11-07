@@ -11,7 +11,8 @@
   "dependencies": {
     "@onehilltech/blueprint": "^3.2.0",
     "@onehilltech/blueprint-gatekeeper": "^0.69.2",
-    "@onehilltech/blueprint-mongodb": "^0.35.7"
+    "@onehilltech/blueprint-mongodb": "^0.35.7",
+    "@onehilltech/dab": "^0.10.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
