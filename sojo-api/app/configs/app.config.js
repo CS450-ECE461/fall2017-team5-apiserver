@@ -1,3 +1,3 @@
 module.exports = exports = {
-  name : 'sojo-api'
+  name : 'sojo-app'
 };
