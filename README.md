@@ -17,3 +17,4 @@ $ git clone https://github.com/CS450-ECE461/fall2017-team5-apiserver.git
 # [Workflow Standards](https://github.com/CS450-ECE461/fall2017-team5-apiserver/blob/master/docs/WORKFLOW.md)
 # [Development Dependencies](https://github.com/CS450-ECE461/fall2017-team5-apiserver/blob/master/docs/DEVELOPMENT_DEPS.md)
 # [Testing](https://github.com/CS450-ECE461/fall2017-team5-apiserver/blob/master/docs/TESTING.md)
+# [Getting Started](https://github.com/CS450-ECE461/fall2017-team5-apiserver/blob/master/docs/GETTING_STARTED.md)
