@@ -3,6 +3,6 @@
 ```bash
 $ export CLIENT_SECRET=""
 $ export CLIENT_OBJECT_ID=""
-$ ./node app
+$ node app
 ```
 
