@@ -22,7 +22,7 @@ module.exports = {
       email: clientName + '@no-reply.com',
       scope: scopes[i],
       type: 'native',
-      recaptcha_secret: '6LcabzgUAAAAAFy7kjuKtNhA1nuMgcTgQnalVfCR'
+      recaptcha_secret: process.env.RECAPTCHA_SECRET
     };
 
     return callback (null, client);
