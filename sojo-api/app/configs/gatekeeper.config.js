@@ -4,7 +4,8 @@ module.exports = {
     options: {
       issuer: 'sojo-app',
       algorithm : 'RS256',
-      secret: 'ssshhh'   // can replace with publicKey, privateKey properties
+      secret: 'ssshhh',
+         // can replace with publicKey, privateKey properties
     }
   }
 };
