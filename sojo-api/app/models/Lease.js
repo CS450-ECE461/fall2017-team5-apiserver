@@ -3,7 +3,7 @@
 const mongodb = require ('@onehilltech/blueprint-mongodb')
 ;
 
-var schema = new mongodb.Schema({
+var schema = new mongodb.Schema ({
   user_id              : {type: Number, required: true, trim: true},
   rent_amount          : {type: Number, required: true, trim: true},
   start_date           : {type: Date, required: true, trim: true},
