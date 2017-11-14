@@ -1,7 +1,7 @@
-var blueprint            = require ('@onehilltech/blueprint')
-    , mongodb            = require ('@onehilltech/blueprint-mongodb')
-    , ResourceController = mongodb.ResourceController
-    , Profile            = require ('../models/Profile')
+var blueprint          = require ('@onehilltech/blueprint')
+  , mongodb            = require ('@onehilltech/blueprint-mongodb')
+  , ResourceController = mongodb.ResourceController
+  , Profile            = require ('../models/Profile')
 ;
 
 function ProfileController () {
