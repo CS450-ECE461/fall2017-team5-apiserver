@@ -14,6 +14,10 @@ ProfileController.prototype.showName = function(){
     }
 };
 
+ProfileController.prototype.showAll = function(){
+
+};
+
 blueprint.controller (ProfileController, ResourceController);
 
 module.exports = exports = ProfileController;

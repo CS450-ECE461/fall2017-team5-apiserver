@@ -6,6 +6,7 @@ module.exports = {
             // optional list of operations to allow
             allow: ['create', 'getOne', 'getAll', 'update', 'delete']
         },
+        get: { action: 'ProfileController@showAll' },
 
         '/:profileId': {
             '/name': {
