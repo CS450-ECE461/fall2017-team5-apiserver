@@ -5,18 +5,12 @@ var blueprint            = require ('@onehilltech/blueprint')
 ;
 
 function ProfileController () {
-    ResourceController.call (this, {model: Profile});
+  ResourceController.call (this, { model: Profile });
 }
 
-ProfileController.prototype.showName = function(){
-    return function(req, res){
-
-    }
-};
-
-ProfileController.prototype.showAll = function(){
-
-};
+ProfileController.prototype.__defineGetter__ ('resourceId', function () {
+  return 'profileId';
+});
 
 blueprint.controller (ProfileController, ResourceController);
 
