@@ -17,9 +17,21 @@ The **name of the branch must follow the format**, issueN where N is equal to th
 
 
 ### Pull Request
-Once a collaborator has completed their task they will push their branch to github and create a **pull request** from their branch to **dev**.  Once the pull request has been created, it will require a reviewer to review the pull request.  At this point the reviewer can also leave comments in the pull request, stating changes that may need to be made or inquiring for the reason why the collaborator chose to do something.
+Once a collaborator has completed their task they will push their branch to github and create a **pull request** from their branch to **dev**, please see the naming section below for what to name your **PR**.  Once the pull request has been created, it will require a reviewer to review the pull request.  At this point the reviewer can also leave comments in the pull request, stating changes that may need to be made or inquiring for the reason why the collaborator chose to do something.
 
 If there are comments, address all comments on the same branch. After addressing the comments, update the comment stating that you have addressed the comment. Remember to push the modified code to the remote branch. This should update the original pull-request with the newly modified code.
+
+###### Naming
+The name of the **pull request** should be the name of the branch for that
+**pull request**.  
+
+```
+// Example
+The branch I want to merge my changes INTO: dev
+The branch that implements issue5: issue5
+
+The name of the PR: issue5
+```
 
 **YOU ARE NOT ALLOWED TO REVIEW YOUR OWN PULL REQUEST EVER**
 
