@@ -26,7 +26,7 @@ The name of the **pull request** should be the name of the branch for that
 **pull request**.  
 
 ```
-# Example
+// Example
 The branch I want to merge my changes INTO: dev
 The branch that implements issue5: issue5
 
