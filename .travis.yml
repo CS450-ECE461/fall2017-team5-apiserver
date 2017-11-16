@@ -1,0 +1,27 @@
+sudo : true
+
+language: node_js
+
+node_js:
+  - "8"
+
+env:
+  global:
+    - CXX=g++-4.8
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+
+services:
+  - mongodb
+
+before_install:
+  - cd $(./.ci_helper.sh name)
+
+after_install:
+  - npm install
+  - npm run test
