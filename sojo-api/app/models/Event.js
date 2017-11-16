@@ -14,7 +14,7 @@ var schema = new mongodb.Schema ({
   attendees : {type: [ObjectId],  required: true,   trim: false}
 });
 
-const COLLECTION_NAME = 'leases';
-const MODEL_NAME      = 'lease';
+const COLLECTION_NAME = 'events';
+const MODEL_NAME      = 'event';
 
 module.exports = mongodb.resource (MODEL_NAME, schema, COLLECTION_NAME);
