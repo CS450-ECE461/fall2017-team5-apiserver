@@ -16,7 +16,7 @@ before_install:
   - sudo apt-get update -q
   - sudo apt-get install gcc-4.8 -y
 
-after_success:
+after_install:
   - cd $(./.ci_helper.sh name)
   - npm install
   - npm run test
