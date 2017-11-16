@@ -14,6 +14,6 @@ var schema = new mongodb.Schema ({
 });
 
 const COLLECTION_NAME = 'utilities';
-const MODEL_NAME = 'utility';
+const MODEL_NAME      = 'utility';
 
 module.exports = mongodb.resource (MODEL_NAME, schema, COLLECTION_NAME);
