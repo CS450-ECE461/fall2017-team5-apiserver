@@ -14,6 +14,7 @@ var schema = new mongodb.Schema ({
   attendees : {type: [ObjectId],  required: true,   trim: false}
 });
 
+// Returns true if an account._id is in the attendees array
 schema.methods.isAttending = (account) => {
   return (this.attendees.filter((id) => account._id.str === id.str).length) > 0;
 }
