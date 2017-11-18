@@ -1,5 +1,5 @@
 module.exports = {
-  '/utility': {
+  '/utilities': {
     policy: 'gatekeeper.auth.bearer',
     resource: {
       controller: 'UtilityController',
