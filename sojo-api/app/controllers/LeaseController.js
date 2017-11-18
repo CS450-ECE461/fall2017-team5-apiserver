@@ -10,6 +10,10 @@ function LeaseController () {
   ResourceController.call (this, { model: Lease });
 }
 
+LeaseController.prototype.__defineGetter__ ('resourceId', () => {
+  return 'Id';
+});
+
 LeaseController.prototype.get = (args) => {
   return {
     execute: (req, res, callback) => {
