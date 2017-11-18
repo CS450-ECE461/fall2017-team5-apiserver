@@ -2,63 +2,30 @@ var blueprint          = require ('@onehilltech/blueprint')
   , mongodb            = require ('@onehilltech/blueprint-mongodb')
   , ResourceController = mongodb.ResourceController
   , Profile            = require ('../models/Profile')
-;
+  ;
 
 function ProfileController () {
   ResourceController.call (this, { model: Profile });
 }
 
-ProfileController.prototype.__defineGetter__ ('resourceId', function () {
-  return 'profileId';
+ProfileController.prototype.__defineGetter__ ('resourceId', () => {
+  return 'Id';
 });
 
-ProfileController.prototype.Me = (args) => {
-  return {
-    validate: (req, callback) => {
-      return callback (req.validationErrors (true));
-    },
-    sanitize: (req, callback) => {
-      return callback (null);
-    },
-    execute: (req, res, callback) => {
-      res.json ({ _id: 'ABCDEFH' });
-      return callback (null);
-    }
-  }
-}
-
-ProfileController.prototype.getEvents = (args) => {
+ProfileController.prototype.get = (args) => {
   return {
     execute: (req, res, callback) => {
-      req.status (200).json ({});
-      return callback (null);
-    }
-  }
-}
-
-ProfileController.prototype.getEventById = (args) => {
-  return {
-    execute: (req, res, callback) => {
-      req.status (200).json ({});
-      return callback (null);
-    }
-  }
-}
-
-ProfileController.prototype.getUtilities = (args) => {
-  return {
-    execute: (req, res, callback) => {
-      req.status (200).json ({});
-      return callback (null);
-    }
-  }
-}
-
-ProfileController.prototype.getUtilityById = (args) => {
-  return {
-    execute: (req, res, callback) => {
-      req.status (200).json ({});
-      return callback (null);
+      Profile.findOne ({ account_id: req.params.Id }, (err, profile) => {
+        if (err) {
+          res.status (400).json (err);
+        }
+        else if (!profile) {
+          res.status (404).send ('Profile not found');
+        }
+        else {
+          res.status (200).json (profile);
+        }
+      });
     }
   }
 }
