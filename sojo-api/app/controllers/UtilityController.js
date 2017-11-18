@@ -17,7 +17,7 @@ UtilityController.prototype.__defineGetter__ ('resourceId', () => {
 UtilityController.prototype.getAll = (args) => {
   return {
     execute: (req, res, callback) => {
-      Event.find ({ account_id: req.params.Id }, (err, utility) => {
+      Utility.find ({ account_id: req.params.Id }, (err, utility) => {
         if (err) {
           res.status (400).json (err);
         }
