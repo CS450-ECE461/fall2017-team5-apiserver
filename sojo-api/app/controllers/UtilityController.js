@@ -14,7 +14,7 @@ UtilityController.prototype.__defineGetter__ ('resourceId', () => {
   return 'Id';
 });
 
-UtilityController.prototype.getAll = (args) => {
+UtilityController.prototype.get = (args) => {
   return {
     execute: (req, res, callback) => {
       Utility.find ({ account_id: req.params.Id }, (err, utility) => {
