@@ -14,6 +14,10 @@ var schema = new mongodb.Schema ({
   attendees : {type: [ObjectId],  required: true,   trim: false}
 });
 
+schema.methods.isAttending = (account) => {
+  return (this.attendees.filter((id) => account._id.str === id.str).length) > 0;
+}
+
 const COLLECTION_NAME = 'events';
 const MODEL_NAME      = 'event';
 
