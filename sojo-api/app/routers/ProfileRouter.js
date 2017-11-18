@@ -3,7 +3,7 @@ module.exports = {
     policy: 'gatekeeper.auth.bearer',
     resource: {
       controller: 'ProfileController',
-      deny: ['getAll'],
-    },
+      deny: ['getAll', 'create']
+    }
   }
-};
+}
