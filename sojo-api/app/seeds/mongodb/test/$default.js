@@ -18,7 +18,7 @@ module.exports = {
     let client_secret = name;
     let recaptcha_secret = name;
 
-    return callback(null, {
+    return callback (null, {
       name,
       client_secret,
       email: name + '@no-reply.com',
@@ -30,7 +30,7 @@ module.exports = {
   accounts: dab.times (1, (i, opts, callback) => {
     var username = 'ember-sojo-frontend';
    
-    return callback(null, {
+    return callback (null, {
       created_by: dab.ref ('clients.0'),
       username,
       password: username,
@@ -41,7 +41,7 @@ module.exports = {
   user_tokens: dab.map (dab.get ('accounts'), (account, opts, callback) => {
     const clientIndex = LOGIN_CLIENTS[account.username];
   
-    return callback(null, {
+    return callback (null, {
       client: dab.get ('clients.0'),
       account: account._id,
       refresh_token: new ObjectId (),
