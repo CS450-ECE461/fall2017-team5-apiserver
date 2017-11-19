@@ -12,17 +12,13 @@ const LOGIN_CLIENTS = {
   'ember-sojo-frontend': 0,
 };
 
-const is_test = (process.env.NODE_ENV === 'test');
-
-module.exports = (is_test) ? {} : { 
+module.exports = { 
   clients: dab.times (1, (i, opts, callback) => {
     let name = 'ember-sojo-frontend';
-    let client_id = process.env.CLIENT_OBJECT_ID;
-    let client_secret = process.env.CLIENT_SECRET;
-    let recaptcha_secret = process.env.RECAPTCHA_SECRET;
+    let client_secret = name;
+    let recaptcha_secret = name;
 
     return callback(null, {
-      _id: client_id,
       name,
       client_secret,
       email: name + '@no-reply.com',
