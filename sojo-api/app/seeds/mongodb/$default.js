@@ -12,7 +12,9 @@ const LOGIN_CLIENTS = {
   'ember-sojo-frontend': 0,
 };
 
-module.exports = { 
+const is_test = (process.env.NODE_ENV === 'test');
+
+module.exports = (is_test) ? {} : { 
   clients: dab.times (1, (i, opts, callback) => {
     let name = 'ember-sojo-frontend';
     let client_id = process.env.CLIENT_OBJECT_ID;
