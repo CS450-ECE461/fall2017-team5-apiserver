@@ -5,7 +5,7 @@ const blueprint          = require ('@onehilltech/blueprint')
 
 module.exports = (account) => {
   new Profile ({
-    full_name   : 'John Smith',
+    full_name   : account.username,
     phone       : 0,
     sojo_events : [],
     account_id: account._id
