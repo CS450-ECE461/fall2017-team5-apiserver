@@ -51,5 +51,52 @@ module.exports = {
 
   client_tokens: dab.map (dab.get ('clients'), (client, opts, callback) => {
     return callback (null, {client: client._id});
+  }),
+
+  profiles: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+    return callback (null, {
+        full_name: "Swag Monkey",
+        phone: 777555333,
+        sojo_events: [ObjectId (11111)],
+        account_id: account._id
+    });
+  }),
+
+  sojo_events: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+    return callback (null, {
+        name: "Fish Sale",
+        date: new Date(),
+        time: new Date(),
+        site: "Cookout Garden",
+        attendees: [account._id]
+    });
+  }),
+
+  leases: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+    return callback (null, {
+      rent_amount: 500,
+      start_date: new Date(),
+      end_date: new Date(),
+      account_id: account._id
+    });
+  }),
+
+  units: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+    return callback (null, {
+      unit_index: "b",
+      building_index: "221",
+      maintenance_email: "main@test.com",
+      landlord_email: "landlord@test.com",
+      account_id: account._id
+    });
+  }),
+
+  utilities: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+    return callback (null, {
+      company_name: "att",
+      url: "att.com",
+      due_date: new Date(),
+      account_id: account._id
+    });
   })
 };
