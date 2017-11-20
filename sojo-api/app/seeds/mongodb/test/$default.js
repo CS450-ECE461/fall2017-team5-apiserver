@@ -92,8 +92,9 @@ module.exports = {
   }),
 
   utilities: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+    let company_name = "att";
     return callback (null, {
-      company_name: "att",
+      company_name,
       url: company_name + ".com",
       due_date: new Date(),
       account_id: account._id
