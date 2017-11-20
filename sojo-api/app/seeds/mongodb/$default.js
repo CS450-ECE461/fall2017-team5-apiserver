@@ -1,9 +1,10 @@
 const dab         = require ('@onehilltech/dab')
+  ,   gatekeeper  = require ('@onehilltech/blueprint-gatekeeper')
   ,   ObjectId    = require ('@onehilltech/blueprint-mongodb').Types.ObjectId
   ;
 
 const scopes = [
-  ["*"],
+  ['*'],
   [],
   []
 ];
@@ -27,6 +28,7 @@ module.exports = (is_test) ? {} : {
       client_secret,
       email: name + '@no-reply.com',
       type: 'native',
+      scope: [gatekeeper.scope.account.create],
       recaptcha_secret
     });
   }),
