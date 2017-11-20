@@ -38,7 +38,8 @@ module.exports = (is_test) ? {} : {
       created_by: dab.ref ('clients.0'),
       username,
       password: username,
-      email: username + '@no-reply.com'
+      email: username + '@no-reply.com',
+      scope: ['*']
     });
   }),
 
