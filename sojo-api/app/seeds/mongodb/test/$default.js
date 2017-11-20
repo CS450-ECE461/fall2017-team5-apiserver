@@ -85,8 +85,8 @@ module.exports = {
     return callback (null, {
       unit_index: "b",
       building_index: "221",
-      maintenance_email: "main@test.com",
-      landlord_email: "landlord@test.com",
+      maintenance_email: "main@no-reply.com",
+      landlord_email: "landlord@no-reply.com",
       account_id: account._id
     });
   }),
