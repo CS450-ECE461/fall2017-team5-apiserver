@@ -28,37 +28,28 @@ PasswordController.prototype.forgotPassword = () => {
       return callback (null);
     },
     
-    execute: (req, res, callback) => {
+    execute: (req, res, callback) => { 
       async.waterfall ([
-        (callback) => {
-          Profile.findOne ({ email: req.body.forgot.email }, callback);
+        (callback) => { 
+          Account.findOne ({ email: req.body.forgot.email }, callback);
         },
-        (profile, callback) => {
-          if (!profile) {
+        (account, callback) => {
+          if (!account) {
             return callback (new HttpError (400, 'invalid email', 'invalid email'));
           }
+          // async ops over an account
           async.waterfall ([
             (callback) => {
-              Account.findById (profile.account_id, callback);
-            },
-            (account, callback) => {
-              if (!account) {
-                return callback (new HttpError (400, 'invalid email', 'invalid email'));
-              }
-              async.waterfall ([
-                (callback) => {
-                  account.password = 'abc123';
-                  account.save (callback);
-                }
-              ], callback);
-            },
-
-            (account, n, callback) => {
-              res.status (200).json (n === 1);
-              return callback (null);
+              account.password = 'abc123';
+              account.save (callback);
             }
           ], callback);
         },
+        (account, n, callback) => {
+          console.log (account);
+          res.status (200).json (n === 1);
+          return callback (null);
+        }
       ], callback);
     }
   }
