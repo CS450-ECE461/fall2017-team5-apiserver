@@ -19,7 +19,7 @@ PaymentHistoryController.prototype.getAll = (args) => {
     execute: (req, res, callback) => {
       PaymentHistory.find ({account_id: req.params.Id }, (err, payment_history) => {
         if (err) {
-          res.status (404).json (err);
+          res.status (400).json (err);
         }
         else if (!payment_history) {
           res.status (404).send ('PaymentHistory not found');

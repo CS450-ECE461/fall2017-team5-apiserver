@@ -109,7 +109,7 @@ module.exports = {
       amount_paid: 1000,
       date_paid: new Date(),
       model,
-      company_id: ObjectId(11111)
+      company_id: ObjectId()
     });
   })
 

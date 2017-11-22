@@ -1,5 +1,5 @@
 module.exports = {
-  '/histories': {
+  '/payment_history': {
     policy: 'gatekeeper.auth.bearer',
     resource: {
       controller: 'PaymentHistoryController',
