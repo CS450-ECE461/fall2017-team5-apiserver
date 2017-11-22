@@ -6,6 +6,7 @@ const blueprint          = require ('@onehilltech/blueprint')
 ,     Account            = require ('@onehilltech/blueprint-gatekeeper/app/models/Account')
 ,     HttpError          = blueprint.errors.HttpError
 ,     mongodb            = require ('@onehilltech/blueprint-mongodb')
+,     bcrypt             = require ('bcryptjs')
 ;
 
 function PasswordController () {
@@ -40,13 +41,21 @@ PasswordController.prototype.forgotPassword = () => {
           // async ops over an account
           async.waterfall ([
             (callback) => {
-              account.password = 'abc123';
+              bcrypt.genSalt (10, callback);
+            },
+            (salt, callback) => {
+              if (!salt) {
+                return callback (new HttpError (500, 'unable to reset password at this time'));
+              }
+              bcrypt.hash (new Date ().toString (), salt, callback);
+            },
+            (hash, callback) => {
+              account.password = hash;
               account.save (callback);
             }
           ], callback);
         },
         (account, n, callback) => {
-          console.log (account);
           res.status (200).json (n === 1);
           return callback (null);
         }
