@@ -10,7 +10,7 @@ var schema = new mongodb.Schema ({
   company_name : {type: String,   required: true, trim: true},
   url          : {type: String,   required: true, trim: true},
   due_date     : {type: Date,     required: true, trim: true},
-  account_id   : {type: ObjectId, required: true, trim: true}
+  account_id   : {type: ObjectId, required: true, trim: false}
 });
 
 const COLLECTION_NAME = 'utilities';

@@ -12,7 +12,7 @@ var schema = new mongodb.Schema ({
   apt_complex_address   : {type: String,   required: true, trim: true},
   maintenance_email     : {type: String,   required: true, trim: true},
   landlord_email        : {type: String,   required: true, trim: true},
-  account_id            : {type: ObjectId, required: true, trim: true}
+  account_id            : {type: ObjectId, required: true, trim: false}
 });
 
 const COLLECTION_NAME = 'units';
