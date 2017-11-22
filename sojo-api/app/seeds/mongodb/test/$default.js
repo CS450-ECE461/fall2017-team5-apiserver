@@ -85,6 +85,7 @@ module.exports = {
     return callback (null, {
       unit_index: 'b',
       building_index: '221',
+      apt_complex_address: "1550 Coding Blvd",
       maintenance_email: 'main@no-reply.com',
       landlord_email: 'landlord@no-reply.com',
       account_id: account._id
@@ -99,5 +100,17 @@ module.exports = {
       due_date: new Date(),
       account_id: account._id
     });
+  }),
+
+  payment_histories: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+    let company_name = 'ipl';
+    return callback (null, {
+      account_id: account._id,
+      amount_paid: 1000,
+      date_paid: new Date(),
+      model: "Utility",
+      company_id: ObjectId(11111)
+    });
   })
+
 };
