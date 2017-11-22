@@ -10,7 +10,7 @@ var schema = new mongodb.Schema ({
   rent_amount : {type: Number,   required: true, trim: true},
   start_date  : {type: Date,     required: true, trim: true},
   end_date    : {type: Date,     required: true, trim: true},
-  account_id  : {type: ObjectId, required: true, trim: true}
+  account_id  : {type: ObjectId, required: true, trim: false}
 });
 
 const COLLECTION_NAME = 'leases';
