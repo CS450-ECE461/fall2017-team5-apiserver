@@ -8,7 +8,6 @@ const mongodb   = require ('@onehilltech/blueprint-mongodb')
 
 var schema = new mongodb.Schema ({
   full_name   : {type: String,     required: true,  trim: true  },
-  email       : {type: String,     required: false, trim: true  },
   phone       : {type: Number,     required: true,  trim: true  },
   sojo_events : {type: [ObjectId], required: false, trim: false },
   account_id  : {type: ObjectId,   required: true,  trim: false }
