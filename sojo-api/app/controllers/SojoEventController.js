@@ -3,7 +3,7 @@
 const blueprint          = require ('@onehilltech/blueprint')
 ,     mongodb            = require ('@onehilltech/blueprint-mongodb')
 ,     ResourceController = mongodb.ResourceController
-,     SojoEvent              = require ('../models/SojoEvent')
+,     SojoEvent          = require ('../models/SojoEvent')
 ;
 
 function SojoEventController () {
