@@ -7,6 +7,7 @@ const blueprint          = require ('@onehilltech/blueprint')
 ,     HttpError          = blueprint.errors.HttpError
 ,     mongodb            = require ('@onehilltech/blueprint-mongodb')
 ,     bcrypt             = require ('bcryptjs')
+,     messaging          = blueprint.messaging
 ;
 
 function PasswordController () {
@@ -56,7 +57,11 @@ PasswordController.prototype.forgotPassword = () => {
           ], callback);
         },
         (account, n, callback) => {
-          res.status (200).json (n === 1);
+          const flag = (n === 1);
+          if (flag) {
+            messaging.emit ('account.password_reset', account);
+          }
+          res.status (200).json (flag);
           return callback (null);
         }
       ], callback);
