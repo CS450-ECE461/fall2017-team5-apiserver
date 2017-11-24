@@ -31,6 +31,7 @@ module.exports = {
     var username = 'ember-sojo-frontend';
    
     return callback (null, {
+      _id: new ObjectId ('000000000000000000000000'),
       created_by: dab.ref ('clients.0'),
       username,
       password: username,
@@ -55,10 +56,10 @@ module.exports = {
 
   profiles: dab.map (dab.get ('accounts'), (account, opts, callback) => {
     return callback (null, {
-        full_name: 'Swag Monkey',
-        phone: 777555333,
-        sojo_events: [ObjectId (11111)],
-        account_id: account._id
+      full_name: 'Swag Monkey',
+      phone: 777555333,
+      sojo_events: [ObjectId (11111)],
+      account_id: account._id
     });
   }),
 
