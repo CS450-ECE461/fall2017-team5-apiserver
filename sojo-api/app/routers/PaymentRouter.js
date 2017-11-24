@@ -3,7 +3,7 @@ module.exports = {
     policy: 'gatekeeper.auth.bearer',
     resource: {
       controller: 'PaymentController',
-      deny: ['update', 'delete']
+      deny: ['getAll', 'update', 'delete']
     }
   }
 }
