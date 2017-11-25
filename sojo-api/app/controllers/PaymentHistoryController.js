@@ -14,7 +14,7 @@ PaymentHistoryController.prototype.__defineGetter__ ('resourceId', () => {
   return 'Id';
 });
 
-PaymentHistoryController.prototype.getAll = (args) => {
+PaymentHistoryController.prototype.get = (args) => {
   return {
     execute: (req, res, callback) => {
       PaymentHistory.find ({account_id: req.params.Id }, (err, payment_history) => {
