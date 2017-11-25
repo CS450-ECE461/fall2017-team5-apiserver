@@ -14,7 +14,7 @@ PaymentController.prototype.__defineGetter__ ('resourceId', () => {
   return 'Id';
 });
 
-PaymentController.prototype.getAll = (args) => {
+PaymentController.prototype.get = (args) => {
   return {
     execute: (req, res, callback) => {
       Payment.find ({account_id: req.params.Id }, (err, payment) => {
