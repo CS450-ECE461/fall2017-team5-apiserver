@@ -14,7 +14,7 @@ var schema = new mongodb.Schema ({
   company_id  : {type: ObjectId, required: true, trim: false}
 });
 
-const COLLECTION_NAME = 'payment_histories';
-const MODEL_NAME      = 'payment_history';
+const COLLECTION_NAME = 'payments';
+const MODEL_NAME      = 'payment';
 
 module.exports = mongodb.resource (MODEL_NAME, schema, COLLECTION_NAME);
