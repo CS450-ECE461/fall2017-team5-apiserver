@@ -103,7 +103,7 @@ module.exports = {
     });
   }),
 
-  payment_histories: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+  payments: dab.map (dab.get ('accounts'), (account, opts, callback) => {
     let model = 'Utility';
     return callback (null, {
       account_id: account._id,
