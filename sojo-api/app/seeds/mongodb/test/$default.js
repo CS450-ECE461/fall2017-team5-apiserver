@@ -1,6 +1,6 @@
 const dab         = require ('@onehilltech/dab')
-  ,   ObjectId    = require ('@onehilltech/blueprint-mongodb').Types.ObjectId
-  ;
+,     ObjectId    = require ('@onehilltech/blueprint-mongodb').Types.ObjectId
+;
 
 const scopes = [
   ["*"],
@@ -29,7 +29,7 @@ module.exports = {
 
   accounts: dab.times (1, (i, opts, callback) => {
     var username = 'ember-sojo-frontend';
-   
+
     return callback (null, {
       _id: new ObjectId ('000000000000000000000000'),
       created_by: dab.ref ('clients.0'),
@@ -41,7 +41,7 @@ module.exports = {
 
   user_tokens: dab.map (dab.get ('accounts'), (account, opts, callback) => {
     const clientIndex = LOGIN_CLIENTS[account.username];
-  
+
     return callback (null, {
       client: dab.get ('clients.0'),
       account: account._id,
@@ -57,6 +57,8 @@ module.exports = {
   profiles: dab.map (dab.get ('accounts'), (account, opts, callback) => {
     return callback (null, {
       full_name: 'Swag Monkey',
+      has_bill_pay_setup: false,
+      has_signed_lease: false,
       phone: 777555333,
       sojo_events: [ObjectId (11111)],
       account_id: account._id
@@ -65,11 +67,11 @@ module.exports = {
 
   sojo_events: dab.map (dab.get ('accounts'), (account, opts, callback) => {
     return callback (null, {
-        name: 'Fish Sale',
-        date: new Date(),
-        time: new Date(),
-        site: 'Cookout Garden',
-        attendees: [account._id]
+      name: 'Fish Sale',
+      date: new Date(),
+      time: new Date(),
+      site: 'Cookout Garden',
+      attendees: [account._id]
     });
   }),
 
@@ -113,5 +115,4 @@ module.exports = {
       company_id: ObjectId()
     });
   })
-
 };
