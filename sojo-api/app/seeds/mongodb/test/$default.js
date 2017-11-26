@@ -31,6 +31,7 @@ module.exports = {
     var username = 'ember-sojo-frontend';
 
     return callback (null, {
+      _id: new ObjectId ('000000000000000000000000'),
       created_by: dab.ref ('clients.0'),
       username,
       password: username,
@@ -104,7 +105,7 @@ module.exports = {
     });
   }),
 
-  payment_histories: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+  payments: dab.map (dab.get ('accounts'), (account, opts, callback) => {
     let model = 'Utility';
     return callback (null, {
       account_id: account._id,
