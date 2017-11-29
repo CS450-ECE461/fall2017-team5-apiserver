@@ -69,7 +69,6 @@ module.exports = {
     return callback (null, {
       name: 'Fish Sale',
       date: new Date(),
-      time: new Date(),
       site: 'Cookout Garden',
       attendees: [account._id]
     });
