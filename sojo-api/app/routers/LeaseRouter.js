@@ -2,7 +2,7 @@ let cors = require ('cors')
 ;
 
 const corsOptions = {
-  methods: ['GET', 'POST', 'PUT', 'DELETE']
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
 };
 
 module.exports = {
@@ -11,7 +11,6 @@ module.exports = {
     policy: 'gatekeeper.auth.bearer',
     resource: {
       controller: 'LeaseController',
-      deny: ['getAll', 'create', 'delete']
     }
   }
 }
