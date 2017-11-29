@@ -57,5 +57,71 @@ module.exports = (is_test) ? {} : {
 
   client_tokens: dab.map (dab.get ('clients'), (client, opts, callback) => {
     return callback (null, {client: client._id});
+  }),
+
+  profiles: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+    return callback (null, {
+      full_name: 'Kyle Peeler',
+      has_bill_pay_setup: false,
+      has_signed_lease: false,
+      phone: 777555333,
+      sojo_events: [new ObjectId ('888888888888888888888888')],
+      account_id: account._id
+    });
+  }),
+
+  sojo_events: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+    return callback (null, {
+      _id: new ObjectId ('888888888888888888888888'),
+      name: 'Fish Sale',
+      date: new Date(),
+      time: new Date(),
+      site: 'Cookout Garden',
+      attendees: [account._id]
+    });
+  }),
+
+  leases: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+    return callback (null, {
+      _id: new ObjectId ('777777777777777777777777'),
+      rent_amount: 500,
+      start_date: new Date(),
+      end_date: new Date(),
+      account_id: account._id
+    });
+  }),
+
+  units: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+    return callback (null, {
+      _id: new ObjectId ('444444444444444444444444'),
+      unit_index: 'b',
+      building_index: '221',
+      apt_complex_address: "1550 Coding Blvd",
+      maintenance_email: 'main@no-reply.com',
+      landlord_email: 'landlord@no-reply.com',
+      account_id: account._id
+    });
+  }),
+
+  utilities: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+    let company_name = 'att';
+    return callback (null, {
+      _id: new ObjectId ('222222222222222222222222'),
+      company_name,
+      url: company_name + '.com',
+      due_date: new Date(),
+      account_id: account._id
+    });
+  }),
+
+  payments: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+    return callback (null, {
+      _id: new ObjectId ('333333333333333333333333'),
+      account_id: account._id,
+      amount_paid: 1000,
+      date_paid: new Date(),
+      company_id: ObjectId()
+    });
   })
+
 };
