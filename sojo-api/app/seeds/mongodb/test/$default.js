@@ -65,7 +65,8 @@ module.exports = {
       has_signed_lease: false,
       phone: "(777) 555-3333",
       sojo_events: [new ObjectId ('888888888888888888888888')],
-      account_id: account._id
+      account_id: account._id,
+      account_picture_url: "http://randomimage.png"
     });
   }),
 

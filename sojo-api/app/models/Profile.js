@@ -12,7 +12,8 @@ var schema = new mongodb.Schema ({
   has_bill_pay_setup  : {type: Boolean,    required: false, trim: false},
   has_signed_lease    : {type: Boolean,    required: false, trim: false},
   sojo_events         : {type: [ObjectId], required: false, trim: false},
-  account_id          : {type: ObjectId,   required: true,  trim: false}
+  account_id          : {type: ObjectId,   required: true,  trim: false},
+  account_picture_url : {type: String,     required: true,  trim: true}
 });
 
 const COLLECTION_NAME = 'profiles';
