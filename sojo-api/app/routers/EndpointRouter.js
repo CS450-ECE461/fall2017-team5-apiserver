@@ -4,8 +4,13 @@ const blueprint = require ('@onehilltech/blueprint')
 ;
 
 module.exports = exports = {
+  '/': {
+    use: [
+      cors()
+    ]
+  },
+
   '/gatekeeper': [
-    cors(),
-    blueprint('router://@onehilltech/blueprint-gatekeeper:v1')
+    blueprint('router://@onehilltech/blueprint-gatekeeper:v1'),
   ]
 };
