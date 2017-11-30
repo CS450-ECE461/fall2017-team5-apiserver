@@ -63,7 +63,7 @@ module.exports = {
       full_name: 'Kyle Peeler',
       has_bill_pay_setup: false,
       has_signed_lease: false,
-      phone: 777555333,
+      phone: "(777) 555-3333",
       sojo_events: [new ObjectId ('888888888888888888888888')],
       account_id: account._id
     });
