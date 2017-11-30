@@ -9,7 +9,6 @@ const mongodb   = require ('@onehilltech/blueprint-mongodb')
 var schema = new mongodb.Schema ({
   name      : {type: String,      required: true,   trim: true},
   date      : {type: Date,        required: true,   trim: true},
-  time      : {type: Date,        required: false,  trim: true},
   site      : {type: String,      required: false,  trim: true},
   attendees : {type: [ObjectId],  required: true,   trim: false}
 });
