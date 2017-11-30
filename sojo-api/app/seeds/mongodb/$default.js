@@ -64,10 +64,10 @@ module.exports = (is_test) ? {} : {
       full_name: 'Kyle Peeler',
       has_bill_pay_setup: false,
       has_signed_lease: false,
-      phone: "(777) 555-3333",
+      phone: '(777) 555-3333',
       sojo_events: [new ObjectId ('888888888888888888888888')],
       account_id: account._id,
-      account_picture_url: "http://randomimage.png"
+      account_picture_url: 'http://randomimage.png'
     });
   }),
 
@@ -87,7 +87,7 @@ module.exports = (is_test) ? {} : {
       rent_amount: 500,
       start_date: new Date(),
       end_date: new Date(),
-      lease_type: "One year",
+      lease_type: 'One year Lease',
       account_id: account._id
     });
   }),
@@ -97,7 +97,7 @@ module.exports = (is_test) ? {} : {
       _id: new ObjectId ('444444444444444444444444'),
       unit_index: 'b',
       building_index: '221',
-      apt_complex_address: "1550 Coding Blvd",
+      apt_complex_address: '1550 Coding Blvd',
       maintenance_email: 'main@no-reply.com',
       landlord_email: 'landlord@no-reply.com',
       account_id: account._id
@@ -121,7 +121,9 @@ module.exports = (is_test) ? {} : {
       account_id: account._id,
       amount_paid: 1000,
       date_paid: new Date(),
-      company_id: ObjectId()
+      company_id: ObjectId(),
+      payment_type: 'Lease',
+      payment_object: new ObjectId ('222222222222222222222222')
     });
   })
 
