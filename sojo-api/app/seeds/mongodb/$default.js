@@ -86,6 +86,7 @@ module.exports = (is_test) ? {} : {
       rent_amount: 500,
       start_date: new Date(),
       end_date: new Date(),
+      lease_type: "One year",
       account_id: account._id
     });
   }),
