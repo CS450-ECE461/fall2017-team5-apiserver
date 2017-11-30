@@ -34,7 +34,9 @@
 # Unit
 + unit_index
 + building_index
-+ apt_complex_address
++ **city**
++ **state**
++ **zip**
 + maintenance_email
 + landlord_email
 + account_id
