@@ -78,6 +78,7 @@ module.exports = {
   leases: dab.map (dab.get ('accounts'), (account, opts, callback) => {
     return callback (null, {
       rent_amount: 500,
+      lease_type: "One Year Lease",
       start_date: new Date(),
       end_date: new Date(),
       account_id: account._id
