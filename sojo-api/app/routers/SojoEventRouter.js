@@ -6,8 +6,8 @@ const corsOptions = {
 };
 
 module.exports = {
-  use: [cors (corsOptions)],
   '/events': {
+    use: [cors (corsOptions)],
     policy: 'gatekeeper.auth.bearer',
     resource: {
       controller: 'SojoEventController',

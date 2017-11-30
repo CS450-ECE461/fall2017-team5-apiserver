@@ -6,8 +6,8 @@ const corsOptions = {
 };
 
 module.exports = {
-  use: [cors (corsOptions)],
   '/utilities': {
+    use: [cors (corsOptions)],
     policy: 'gatekeeper.auth.bearer',
     resource: {
       controller: 'UtilityController',
