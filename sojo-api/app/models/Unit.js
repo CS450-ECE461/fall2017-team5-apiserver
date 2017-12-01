@@ -7,12 +7,14 @@ const mongodb   = require ('@onehilltech/blueprint-mongodb')
 ;
 
 var schema = new mongodb.Schema ({
-  unit_index            : {type: String,   required: true, trim: true},
-  building_index        : {type: String,   required: true, trim: true},
-  apt_complex_address   : {type: String,   required: true, trim: true},
-  maintenance_email     : {type: String,   required: true, trim: true},
-  landlord_email        : {type: String,   required: true, trim: true},
-  account_id            : {type: ObjectId, required: true, trim: false}
+  unit_index        : {type: String,   required: true, trim: true},
+  building_index    : {type: String,   required: true, trim: true},
+  city              : {type: String,   required: true, trim: true},
+  state             : {type: String,   required: true, trim: true},
+  zip               : {type: Number,   required: true, trim: true},
+  maintenance_email : {type: String,   required: true, trim: true},
+  landlord_email    : {type: String,   required: true, trim: true},
+  account_id        : {type: ObjectId, required: true, trim: false}
 });
 
 const COLLECTION_NAME = 'units';

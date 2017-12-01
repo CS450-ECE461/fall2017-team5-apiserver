@@ -100,7 +100,9 @@ module.exports = (is_test) ? {} : {
       _id: new ObjectId ('444444444444444444444444'),
       unit_index: 'b',
       building_index: '221',
-      apt_complex_address: '1550 Coding Blvd',
+      city: 'Indianapolis',
+      state: 'Indiana',
+      zip: 42556,
       maintenance_email: 'main@no-reply.com',
       landlord_email: 'landlord@no-reply.com',
       account_id: account._id
