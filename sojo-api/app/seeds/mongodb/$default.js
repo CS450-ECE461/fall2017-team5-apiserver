@@ -76,8 +76,8 @@ module.exports = (is_test) ? {} : {
       _id: new ObjectId ('888888888888888888888888'),
       name: 'Fish Sale',
       date: new Date(),
-      start_time: new Date(),
-      end_time: new Date(),
+      start_time: new Date(2017, 2, 2, 12),
+      end_time: new Date(2017, 2, 2, 4),
       description: 'Cookout Garden',
       attendees: [account._id],
       is_private: false
