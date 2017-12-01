@@ -63,9 +63,10 @@ module.exports = {
       full_name: 'Kyle Peeler',
       has_bill_pay_setup: false,
       has_signed_lease: false,
-      phone: "(777) 555-3333",
+      phone: '(777) 555-3333',
       sojo_events: [new ObjectId ('888888888888888888888888')],
-      account_id: account._id
+      account_id: account._id,
+      account_picture_url: 'http://randomimage.png'
     });
   }),
 
@@ -74,8 +75,11 @@ module.exports = {
       _id: new ObjectId ('888888888888888888888888'),
       name: 'Fish Sale',
       date: new Date(),
-      site: 'Cookout Garden',
-      attendees: [account._id]
+      start_time: new Date(2017, 2, 2, 12),
+      end_time: new Date(2017, 2, 2, 4),
+      description: 'Cookout Garden',
+      attendees: [account._id],
+      is_private: false
     });
   }),
 
@@ -83,9 +87,9 @@ module.exports = {
     return callback (null, {
       _id: new ObjectId ('777777777777777777777777'),
       rent_amount: 500,
-      lease_type: "One Year Lease",
-      start_date: new Date(),
-      end_date: new Date(),
+      lease_type: 'One Year Lease',
+      start_date: new Date(2017, 1, 1),
+      end_date: new Date(2018, 1, 1),
       account_id: account._id
     });
   }),
@@ -95,7 +99,9 @@ module.exports = {
       _id: new ObjectId ('444444444444444444444444'),
       unit_index: 'b',
       building_index: '221',
-      apt_complex_address: "1550 Coding Blvd",
+      city: 'Indianapolis',
+      state: 'Indiana',
+      zip: 45678,
       maintenance_email: 'main@no-reply.com',
       landlord_email: 'landlord@no-reply.com',
       account_id: account._id
@@ -119,7 +125,9 @@ module.exports = {
       account_id: account._id,
       amount_paid: 1000,
       date_paid: new Date(),
-      company_id: ObjectId()
+      company_id: ObjectId(),
+      payment_type: 'Lease',
+      payment_object: new ObjectId ('222222222222222222222222')
     });
   })
 };
