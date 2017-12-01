@@ -32,7 +32,23 @@ SojoEventController.prototype.getAll = (args) => {
   }
 }
 
-
+SojoEventController.prototype.get = (args) => {
+  return {
+    execute: (req, res, callback) => {
+      SojoEvent.find ({ account_id: req.params.Id }, (err, sojo_event) => {
+        if (err) {
+          res.status (400).json (err);
+        }
+        else if (!sojo_event) {
+          res.status (404).json ('SojoEvent not found');
+        }
+        else {
+          res.status (200).json (sojo_event);
+        }
+      });
+    }
+  }
+}
 
 blueprint.controller (SojoEventController, ResourceController);
 
