@@ -88,8 +88,8 @@ module.exports = {
       _id: new ObjectId ('777777777777777777777777'),
       rent_amount: 500,
       lease_type: 'One Year Lease',
-      start_date: new Date(),
-      end_date: new Date(),
+      start_date: new Date(2017, 1, 1),
+      end_date: new Date(2018, 1, 1),
       account_id: account._id
     });
   }),
