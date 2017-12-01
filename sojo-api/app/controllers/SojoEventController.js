@@ -40,7 +40,7 @@ SojoEventController.prototype.get = (args) => {
           res.status (400).json (err);
         }
         else if (!sojo_event) {
-          res.status (404).json ('SojoEvent not found');
+          res.status (404).send ('SojoEvent not found');
         }
         else {
           res.status (200).json (sojo_event);
