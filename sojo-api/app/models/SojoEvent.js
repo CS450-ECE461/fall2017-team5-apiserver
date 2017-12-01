@@ -7,10 +7,13 @@ const mongodb   = require ('@onehilltech/blueprint-mongodb')
 ;
 
 var schema = new mongodb.Schema ({
-  name      : {type: String,      required: true,   trim: true},
-  date      : {type: Date,        required: true,   trim: true},
-  site      : {type: String,      required: false,  trim: true},
-  attendees : {type: [ObjectId],  required: true,   trim: false}
+  name        : {type: String,     required: true,  trim: true},
+  date        : {type: Date,       required: true,  trim: true},
+  start_time  : {type: Date,       required: true,  trim: true},
+  end_time    : {type: Date,       required: true,  trim: true},
+  description : {type: String,     required: false, trim: true},
+  attendees   : {type: [ObjectId], required: true,  trim: false},
+  is_private  : {type: Boolean,    required: true,  trim: false}
 });
 
 const COLLECTION_NAME = 'sojo_events';

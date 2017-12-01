@@ -75,8 +75,11 @@ module.exports = {
       _id: new ObjectId ('888888888888888888888888'),
       name: 'Fish Sale',
       date: new Date(),
-      site: 'Cookout Garden',
-      attendees: [account._id]
+      start_time: new Date(),
+      end_time: new Date(),
+      description: 'Cookout Garden',
+      attendees: [account._id],
+      is_private: false
     });
   }),
 
