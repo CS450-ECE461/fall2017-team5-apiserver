@@ -3,12 +3,13 @@ var blueprint = require ('@onehilltech/blueprint')
 ;
 
 describe ('Utility', function () {
-  describe ('/utilities/000000000000000000000000', function () {
+  describe ('/utilities/:utilityId', function () {
     context ('GET', function () {
       it ('should get a utility', function (done) {
         const accessToken = blueprint.app.seeds.$default.user_tokens[0].serializeSync ();
+        const utility0 = blueprint.app.seeds.$default.utilities[0];
         blueprint.testing.request ()
-          .get ('/utilities/000000000000000000000000')
+          .get ('/utilities/' + utility0._id)
           .set('Authorization', 'Bearer ' + accessToken.access_token)
           .expect (200, done);
       });

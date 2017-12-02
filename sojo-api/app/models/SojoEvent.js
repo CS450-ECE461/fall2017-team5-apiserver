@@ -12,8 +12,8 @@ var schema = new mongodb.Schema ({
   start_time  : {type: Date,       required: true,  trim: true},
   end_time    : {type: Date,       required: true,  trim: true},
   description : {type: String,     required: false, trim: true},
-  attendees   : {type: [ObjectId], required: false, trim: false},
-  is_private  : {type: Boolean,    required: true,  trim: false}
+  type        : {type: String,     required: true,  trim: true},
+  account_id  : {type: ObjectId,   required: false, trim: false}
 });
 
 const COLLECTION_NAME = 'sojo_events';
