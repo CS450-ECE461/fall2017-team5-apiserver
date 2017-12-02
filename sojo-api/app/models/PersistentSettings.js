@@ -6,13 +6,14 @@ const mongodb   = require ('@onehilltech/blueprint-mongodb')
 ;
 
 var schema = new mongodb.Schema ({
-  week_before_reminder   : {type: Boolean, required: true, trim: false},
-  day_before_reminder    : {type: Boolean, required: true, trim: false},
-  property_reminder      : {type: Boolean, required: true, trim: false},
-  emergency_reminder     : {type: Boolean, required: true, trim: false},
-  event_reminder         : {type: Boolean, required: true, trim: false},
-  request_reminder       : {type: Boolean, required: true, trim: false}
-}
+  account_id             : {type: ObjectId, required: true, trim: false},
+  week_before_reminder   : {type: Boolean,  required: true, trim: false},
+  day_before_reminder    : {type: Boolean,  required: true, trim: false},
+  property_reminder      : {type: Boolean,  required: true, trim: false},
+  emergency_reminder     : {type: Boolean,  required: true, trim: false},
+  event_reminder         : {type: Boolean,  required: true, trim: false},
+  request_reminder       : {type: Boolean,  required: true, trim: false}
+});
 
 const COLLECTION_NAME = 'persistent_settings';
 const MODEL_NAME = 'persistent_setting';
