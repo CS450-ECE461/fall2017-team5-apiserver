@@ -120,6 +120,19 @@ module.exports = {
     });
   }),
 
+  persistent_settings: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+    return callback (null, {
+      _id: new ObjectId ('666666666666666666666666'),
+      account_id: account._id,
+      week_before_reminder: false,
+      day_before_reminder: false,
+      property_reminder: false,
+      emergency_reminder: false,
+      event_reminder: false,
+      request_reminder: false
+    })
+  }),
+
   payments: dab.map (dab.get ('accounts'), (account, opts, callback) => {
     return callback (null, {
       _id: new ObjectId ('333333333333333333333333'),
