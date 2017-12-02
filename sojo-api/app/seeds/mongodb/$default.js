@@ -71,17 +71,30 @@ module.exports = (is_test) ? {} : {
     });
   }),
 
-  sojo_events: dab.map (dab.get ('accounts'), (account, opts, callback) => {
-    return callback (null, {
-      _id: new ObjectId ('888888888888888888888888'),
-      name: 'Fish Sale',
-      date: new Date(),
-      start_time: new Date(2017, 2, 2, 12),
-      end_time: new Date(2017, 2, 2, 4),
-      description: 'Cookout Garden',
-      attendees: [account._id],
-      is_private: false
-    });
+  sojo_events: dab.times (2, (i, opts, callback) => {
+    var is_even = i % 2 === 0;
+
+    if (is_even) {
+      return callback (null, {
+        name: 'Albino Peach Eating Contest',
+        date: new Date(),
+        start_time: new Date(2017, 2, 2, 12),
+        end_time: new Date(2017, 2, 2, 4),
+        description: 'Cookout Garden',
+        type: 'Maintenance request',
+        account_id: dab.ref ('accounts.0')
+      });
+    }
+    else {
+      return callback (null, {
+        name: 'Albino Peach Eating Contest',
+        date: new Date(),
+        start_time: new Date(2017, 2, 2, 12),
+        end_time: new Date(2017, 2, 2, 4),
+        description: 'Cookout Garden',
+        type: 'Apartment Event'
+      })
+    }
   }),
 
   leases: dab.map (dab.get ('accounts'), (account, opts, callback) => {
@@ -140,7 +153,7 @@ module.exports = (is_test) ? {} : {
       amount_paid: 1000,
       date_paid: new Date(),
       company_id: ObjectId(),
-      payment_type: 'Lease',
+      payment_type: 'Utility',
       payment_object: new ObjectId ('222222222222222222222222')
     });
   })
