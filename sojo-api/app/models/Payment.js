@@ -10,7 +10,6 @@ var schema = new mongodb.Schema ({
   account_id     : {type: ObjectId, required: true, trim: false},
   amount_paid    : {type: Number,   required: true, trim: true},
   date_paid      : {type: Date,     required: true, trim: true},
-  company_id     : {type: ObjectId, required: true, trim: false},
   payment_type   : {type: String,   required: true, trim: true},
   payment_object : {type: ObjectId, required: true, trim: false}
 });
