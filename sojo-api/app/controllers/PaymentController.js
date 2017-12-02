@@ -44,7 +44,7 @@ PaymentController.prototype.getAllRentPayments = () => {
   return {
     execute: (req, res, callback) => {
       Payment.find ({
-        account_id: req.params.Id,
+        account_id: req.params.resourceId,
         payment_type: 'lease'
       }, (err, payment) => {
         if (err) {
@@ -64,10 +64,10 @@ PaymentController.prototype.getAllRentPayments = () => {
 PaymentController.prototype.getOneRentPayment = () => {
   return {
     execute: (req, res, callback) => {
-      Payment.findOne ({
-        account_id: req.params.Id,
+      Payment.find ({
+        account_id: req.params.resourceId,
         payment_type: 'lease',
-        payment_object: req.params.LeaseId
+        payment_object: req.params.leaseId
       }, (err, payment) => {
         if (err) {
           res.status (400).json (err);
@@ -87,7 +87,7 @@ PaymentController.prototype.getAllUtilityPayments = () => {
   return {
     execute: (req, res, callback) => {
       Payment.find ({
-        account_id: req.params.Id,
+        account_id: req.params.resourceId,
         payment_type: 'utility'
       }, (err, payment) => {
         if (err) {
@@ -108,9 +108,9 @@ PaymentController.prototype.getOneUtilityPayment = () => {
   return {
     execute: (req, res, callback) => {
       Payment.find ({
-        account_id: req.params.Id,
+        account_id: req.params.resourceId,
         payment_type: 'utility',
-        payment_object: req.params.UtilityId
+        payment_object: req.params.utilityId
       }, (err, payment) => {
         if (err) {
           res.status (400).json (err);

@@ -35,7 +35,6 @@ module.exports = {
     var username = 'ember-sojo-frontend';
    
     return callback(null, {
-      _id: new ObjectId ('5a22e70874dc953fbb5a7434'),
       created_by: dab.ref ('clients.0'),
       username,
       password: username,

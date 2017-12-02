@@ -121,14 +121,26 @@ module.exports = (is_test) ? {} : {
     });
   }),
 
-  payments: dab.times (1, (i, opts, callback) => {
-    return callback (null, {
-      _id: new ObjectId ('333333333333333333333333'),
-      account_id: dab.ref ('accounts.0'),
-      amount_paid: 1000,
-      date_paid: new Date(),
-      payment_type: 'Lease',
-      payment_object: new ObjectId ('222222222222222222222222')
-    });
+  payments: dab.times (2, (i, opts, callback) => {
+    var is_even = i % 2 === 0;
+
+    if (is_even) {
+      return callback (null, {
+        account_id: dab.ref ('accounts.0'),
+        amount_paid: 1000,
+        date_paid: new Date(),
+        payment_type: 'lease',
+        payment_object: dab.ref ('leases.0')
+      });
+    }
+    else {
+      return callback (null, {
+        account_id: dab.ref ('accounts.0'),
+        amount_paid: 1000,
+        date_paid: new Date(),
+        payment_type: 'utility',
+        payment_object: dab.ref ('utilities.0')
+      });
+    }
   })
 };
