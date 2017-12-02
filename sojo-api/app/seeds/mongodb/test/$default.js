@@ -80,6 +80,7 @@ module.exports = {
         start_time: new Date(2017, 2, 2, 12),
         end_time: new Date(2017, 2, 2, 4),
         description: 'Cookout Garden',
+        type: 'Maintenance request',
         account_id: (dab.ref ('accounts.0'))
       });
     }
@@ -89,7 +90,8 @@ module.exports = {
         date: new Date(),
         start_time: new Date(2017, 2, 2, 12),
         end_time: new Date(2017, 2, 2, 4),
-        description: 'Cookout Garden'
+        description: 'Cookout Garden',
+        type: 'Apartment Event'
       })
     }
   }),

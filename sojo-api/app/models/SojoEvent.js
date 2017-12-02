@@ -12,6 +12,7 @@ var schema = new mongodb.Schema ({
   start_time  : {type: Date,       required: true,  trim: true},
   end_time    : {type: Date,       required: true,  trim: true},
   description : {type: String,     required: false, trim: true},
+  type        : {type: String,     required: true,  trim: true},
   account_id  : {type: ObjectId,   required: false, trim: false}
 });
 
