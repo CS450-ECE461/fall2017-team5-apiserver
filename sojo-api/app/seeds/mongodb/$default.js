@@ -121,16 +121,14 @@ module.exports = (is_test) ? {} : {
     });
   }),
 
-  payments: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+  payments: dab.times (1, (i, opts, callback) => {
     return callback (null, {
       _id: new ObjectId ('333333333333333333333333'),
-      account_id: account._id,
+      account_id: dab.ref ('accounts.0'),
       amount_paid: 1000,
       date_paid: new Date(),
-      company_id: ObjectId(),
       payment_type: 'Lease',
       payment_object: new ObjectId ('222222222222222222222222')
     });
   })
-
 };

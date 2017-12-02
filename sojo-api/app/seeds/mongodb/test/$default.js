@@ -35,6 +35,7 @@ module.exports = {
     var username = 'ember-sojo-frontend';
    
     return callback(null, {
+      _id: new ObjectId ('5a22e70874dc953fbb5a7434'),
       created_by: dab.ref ('clients.0'),
       username,
       password: username,
@@ -120,15 +121,26 @@ module.exports = {
     });
   }),
 
-  payments: dab.map (dab.get ('accounts'), (account, opts, callback) => {
-    return callback (null, {
-      _id: new ObjectId ('333333333333333333333333'),
-      account_id: account._id,
-      amount_paid: 1000,
-      date_paid: new Date(),
-      company_id: ObjectId(),
-      payment_type: 'Lease',
-      payment_object: new ObjectId ('222222222222222222222222')
-    });
+  payments: dab.times (2, (i, opts, callback) => {
+    var is_even = i % 2 === 0;
+
+    if (is_even) {
+      return callback (null, {
+        account_id: dab.ref ('accounts.0'),
+        amount_paid: 1000,
+        date_paid: new Date(),
+        payment_type: 'lease',
+        payment_object: dab.ref ('leases.0')
+      });
+    }
+    else {
+      return callback (null, {
+        account_id: dab.ref ('accounts.0'),
+        amount_paid: 1000,
+        date_paid: new Date(),
+        payment_type: 'utility',
+        payment_object: dab.ref ('utilities.0')
+      });
+    }
   })
 };
