@@ -99,6 +99,7 @@ module.exports = {
       _id: new ObjectId ('444444444444444444444444'),
       unit_index: 'b',
       building_index: '221',
+      address: '1234 foobar drive',
       city: 'Indianapolis',
       state: 'Indiana',
       zip: 45678,
