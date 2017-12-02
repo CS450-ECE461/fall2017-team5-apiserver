@@ -65,9 +65,10 @@ module.exports = (is_test) ? {} : {
       has_bill_pay_setup: false,
       has_signed_lease: false,
       phone: '(777) 555-3333',
-      sojo_events: [new ObjectId ('888888888888888888888888')],
       account_id: account._id,
-      account_picture_url: 'http://randomimage.png'
+      account_picture_url: 'http://randomimage.png',
+      electric_utility: new ObjectId,
+      cable_utility: new ObjectId
     });
   }),
 
