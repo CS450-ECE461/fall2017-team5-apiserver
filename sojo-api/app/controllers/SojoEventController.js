@@ -57,7 +57,7 @@ SojoEventController.prototype.get = (args) => {
 SojoEventController.prototype.getAccountEvents = (args) => {
   return {
     execute: (req, res, callback) => {
-      SojoEvent.find ({ account_id: req.params.AccountId }, (err, sojo_event) => {
+      SojoEvent.find ({ account_id: req.params.accountId }, (err, sojo_event) => {
         if (err) {
           res.status (400).json (err);
         }
