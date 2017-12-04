@@ -72,6 +72,15 @@ const COMPANY = [
   ['brighthouse']
 ];
 
+const ACTIVATION_CODES = [
+  'djew8fe32r',
+  '5y4b5vfwef',
+  'ewfwe23523',
+  'fwrehj65uy',
+  't34tf4tt43',
+  'fef13rqwdc'
+];
+
 // ------------------
 
 const is_test = (process.env.NODE_ENV === 'test');
@@ -178,4 +187,17 @@ module.exports = (is_test) ? {} : {
       account_id: null,
     });
   }),
+
+  bootstraps: dab.times (6, (i, opts, callback) => {
+    const activation_code = ACTIVATION_CODES[i]; 
+
+    return callback (null, {
+      profile: dab.ref ('profiles.' + i),
+      sojo_events: dab.ref ('sojo_events.' + i),
+      unit: dab.ref ('units.' + i),
+      lease: dab.ref ('leases.' + i),
+      activation_code,
+      is_activated: false
+    });
+  })
 };
