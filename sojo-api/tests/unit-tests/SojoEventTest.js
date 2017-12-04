@@ -8,7 +8,7 @@ describe ('SojoEvent', function () {
   describe ('/events/', function () {
     context ('GET', function () {
       it ('should get all events that are public', function (done) {
-        const event0 = blueprint.app.seeds.$default.sojo_events[1];
+        const event1 = blueprint.app.seeds.$default.sojo_events[1];
         const accessToken = blueprint.app.seeds.$default.user_tokens[0].serializeSync ();
         blueprint.testing.request ()
           .get ('/events')
@@ -16,14 +16,14 @@ describe ('SojoEvent', function () {
           .expect (200, mongodb.lean (
             [
               {
-                _id: event0._id,
-                name: event0.name,
-                date: event0.date,
-                start_time: event0.start_time,
-                end_time: event0.end_time,
-                description: event0.description,
-                type: event0.type,
-                __v: event0.__v
+                _id: event1._id,
+                name: event1.name,
+                date: event1.date,
+                start_time: event1.start_time,
+                end_time: event1.end_time,
+                description: event1.description,
+                type: event1.type,
+                __v: event1.__v
               }
             ]
           ), done);

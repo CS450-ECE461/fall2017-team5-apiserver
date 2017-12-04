@@ -1,5 +1,6 @@
 var blueprint = require ('@onehilltech/blueprint')
 , expect      = require ('chai').expect
+, mongodb     = require ('@onehilltech/blueprint-mongodb')
 ;
 
 describe ('Payment', function () {
@@ -8,10 +9,21 @@ describe ('Payment', function () {
       it ('should get a payment', function (done) {
         const accessToken = blueprint.app.seeds.$default.user_tokens[0].serializeSync ();
         const account0 = blueprint.app.seeds.$default.accounts[0];
+        const payment0 = blueprint.app.seeds.$default.payments[0];
         blueprint.testing.request ()
           .get ('/payments/' + account0._id)
           .set('Authorization', 'Bearer ' + accessToken.access_token)
-          .expect (200, done);
+          .expect (200, mongodb.lean (
+            {
+              _id: payment0._id,
+              amount_paid: payment0.amount_paid,
+              date_paid: payment0.date_paid,
+              payment_type: payment0.payment_type,
+              account_id: payment0.account_id,
+              payment_object: payment0.payment_object,
+              __v: payment0.__v
+            }
+          ), done);
       });
     });
   });
@@ -21,24 +33,48 @@ describe ('Payment', function () {
       it ('should get all payments for a user that are of type lease', (done) => {
         const accessToken = blueprint.app.seeds.$default.user_tokens[0].serializeSync ();
         const account0 = blueprint.app.seeds.$default.accounts[0];
+        const payment0 = blueprint.app.seeds.$default.payments[0];
         blueprint.testing.request ()
           .get ('/payments/' + account0._id + '/rent')
           .set('Authorization', 'Bearer ' + accessToken.access_token)
-          .expect (200, done);
+          .expect (200, mongodb.lean (
+            [
+              {
+                _id: payment0._id,
+                amount_paid: payment0.amount_paid,
+                date_paid: payment0.date_paid,
+                payment_type: payment0.payment_type,
+                account_id: payment0.account_id,
+                payment_object: payment0.payment_object,
+                __v: payment0.__v
+              }
+            ]
+          ), done);
       });
     });
   });
 
   describe ('/payments/:account_id/rent/:leaseId', () => {
     context  ('GET', () => {
-      it ('should return payment history for a specific lease', (done) => {
+      it ('should return a payment for a specific lease', (done) => {
         const accessToken = blueprint.app.seeds.$default.user_tokens[0].serializeSync ();
         const account0 = blueprint.app.seeds.$default.accounts[0];
         const lease0 = blueprint.app.seeds.$default.leases[0];
+        const payment0 = blueprint.app.seeds.$default.payments[0];
         blueprint.testing.request ()
           .get ('/payments/' + account0._id + '/rent/' + lease0._id)
           .set('Authorization', 'Bearer ' + accessToken.access_token)
-          .expect (200, done);
+          .expect (200, mongodb.lean (
+            {
+              _id: payment0._id,
+              amount_paid: payment0.amount_paid,
+              date_paid: payment0.date_paid,
+              payment_type: payment0.payment_type,
+              account_id: payment0.account_id,
+              payment_object: payment0.payment_object,
+              __v: payment0.__v
+            }
+          ), done);
       });
     });
   });
@@ -48,10 +84,23 @@ describe ('Payment', function () {
       it ('should get all payments for a user that are of type utility', (done) => {
         const accessToken = blueprint.app.seeds.$default.user_tokens[0].serializeSync ();
         const account0 = blueprint.app.seeds.$default.accounts[0];
+        const payment1 = blueprint.app.seeds.$default.payments[1];
         blueprint.testing.request ()
           .get ('/payments/' + account0._id + '/utility')
           .set('Authorization', 'Bearer ' + accessToken.access_token)
-          .expect (200, done);
+          .expect (200, mongodb.lean (
+            [
+              {
+                _id: payment1._id,
+                amount_paid: payment1.amount_paid,
+                date_paid: payment1.date_paid,
+                payment_type: payment1.payment_type,
+                account_id: payment1.account_id,
+                payment_object: payment1.payment_object,
+                __v: payment1.__v
+              }
+            ]
+          ), done);
       });
     });
   });
@@ -62,10 +111,21 @@ describe ('Payment', function () {
         const accessToken = blueprint.app.seeds.$default.user_tokens[0].serializeSync ();
         const account0 = blueprint.app.seeds.$default.accounts[0];
         const utility0 = blueprint.app.seeds.$default.utilities[0];
+        const payment1 = blueprint.app.seeds.$default.payments[1];
         blueprint.testing.request ()
           .get ('/payments/' + account0._id + '/utility/' + utility0._id)
           .set('Authorization', 'Bearer ' + accessToken.access_token)
-          .expect (200, done);
+          .expect (200, mongodb.lean (
+            {
+              _id: payment1._id,
+              amount_paid: payment1.amount_paid,
+              date_paid: payment1.date_paid,
+              payment_type: payment1.payment_type,
+              account_id: payment1.account_id,
+              payment_object: payment1.payment_object,
+              __v: payment1.__v
+            }
+          ), done);
       });
     });
   });
