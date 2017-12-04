@@ -76,11 +76,11 @@ module.exports = {
 
     if (is_even) {
       return callback (null, {
-        name: 'Albino Peach Eating Contest',
+        name: 'Bathroom broke',
         date: new Date(),
         start_time: new Date(2017, 2, 2, 12),
         end_time: new Date(2017, 2, 2, 4),
-        description: 'Cookout Garden',
+        description: 'Not working',
         type: 'Maintenance request',
         account_id: (dab.ref ('accounts.0'))
       });
