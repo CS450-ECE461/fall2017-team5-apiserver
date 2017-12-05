@@ -25,7 +25,7 @@ PaymentController.prototype.__defineGetter__ ('leaseId', () => {
 PaymentController.prototype.get = (args) => {
   return {
     execute: (req, res, callback) => {
-      Payment.findOne ({account_id: req.params.Id }, (err, payment) => {
+      Payment.find ({account_id: req.params.Id }, (err, payment) => {
         if (err) {
           res.status (400).json (err);
         }

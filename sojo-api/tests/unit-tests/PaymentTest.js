@@ -6,14 +6,16 @@ var blueprint = require ('@onehilltech/blueprint')
 describe ('Payment', function () {
   describe ('/payments/:account_id', function () {
     context ('GET', function () {
-      it ('should get a payment', function (done) {
+      it ('should get all payments for an account', function (done) {
         const accessToken = blueprint.app.seeds.$default.user_tokens[0].serializeSync ();
         const account0 = blueprint.app.seeds.$default.accounts[0];
         const payment0 = blueprint.app.seeds.$default.payments[0];
+        const payment1 = blueprint.app.seeds.$default.payments[1];
         blueprint.testing.request ()
           .get ('/payments/' + account0._id)
           .set('Authorization', 'Bearer ' + accessToken.access_token)
           .expect (200, mongodb.lean (
+            [
             {
               _id: payment0._id,
               amount_paid: payment0.amount_paid,
@@ -22,7 +24,17 @@ describe ('Payment', function () {
               account_id: payment0.account_id,
               payment_object: payment0.payment_object,
               __v: payment0.__v
+            },
+            {
+              _id: payment1._id,
+              amount_paid: payment1.amount_paid,
+              date_paid: payment1.date_paid,
+              payment_type: payment1.payment_type,
+              account_id: payment1.account_id,
+              payment_object: payment1.payment_object,
+              __v: payment1.__v
             }
+            ]
           ), done);
       });
     });
