@@ -27,7 +27,7 @@ ActivationController.prototype.__invoke = () => {
       return callback (req.validationErrors (true));
     },
     execute: (req, res, callback) => {
-      Bootstrap.findOne ({ activation_code: req.body.activation_code }, (err, bootstrap) => {
+      Bootstrap.findOne ({ activation_code: req.body.confirmation_code }, (err, bootstrap) => {
         console.log (bootstrap);
         Profile.findOne ({ _id: bootstrap.profile }, (err, profile) => {
           profile.account_id = req.body.account_id;
