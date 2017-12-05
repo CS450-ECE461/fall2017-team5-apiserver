@@ -22,7 +22,7 @@ ActivationCodeController.prototype.__invoke = () => {
         if (err) {
           res.status (400).json (err);
         } else if (!bootstrap) {
-          res.status (404).json ({ valid: false });
+          res.status (200).json ({ valid: false });
         } else {
           res.status (200).json ({ valid: true });
         }
