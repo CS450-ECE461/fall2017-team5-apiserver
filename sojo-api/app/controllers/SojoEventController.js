@@ -40,7 +40,7 @@ SojoEventController.prototype.getAll = (args) => {
 SojoEventController.prototype.get = (args) => {
   return {
     execute: (req, res, callback) => {
-      SojoEvent.findOne ({ _id: req.params.Id }, (err, sojo_event) => {
+      SojoEvent.findOne ({ account_id: req.params.Id }, (err, sojo_event) => {
         if (err) {
           res.status (400).json (err);
         }
