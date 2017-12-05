@@ -23,7 +23,7 @@ ActivationController.prototype.__invoke = () => {
   return {
     validate: (req, callback) => {
       req.checkBody ('account_id', 'Missing account_id').notEmpty ();
-      req.checkBody ('activation_code', 'Missing activation code').notEmpty ();
+      req.checkBody ('confirmation_code', 'Missing confirmation code').notEmpty ();
       return callback (req.validationErrors (true));
     },
     execute: (req, res, callback) => {
