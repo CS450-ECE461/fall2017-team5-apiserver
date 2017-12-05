@@ -8,7 +8,7 @@ const corsOptions = {
 
 module.exports = {
   '/confirm': {
-    use: cors (corsOptions),
+    use: [cors (corsOptions)],
     policy: 'gatekeeper.auth.bearer',
     post: { action: 'ActivationController' }
   }

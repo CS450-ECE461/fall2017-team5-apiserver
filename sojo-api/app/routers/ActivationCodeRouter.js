@@ -8,7 +8,7 @@ const corsOptions = {
 
 module.exports = {
   '/checkcode': {
-    use: cors (corsOptions),
+    use: [cors (corsOptions)],
     post: { action: 'ActivationCodeController' }
   }
 }
