@@ -41,7 +41,7 @@ ActivationController.prototype.__invoke = () => {
           lease.account_id = req.body.account_id;
           lease.save ();
         });
-        bootstrap.sojo_events.map ((o) => {
+        bootstrap.sojo_event.map ((o) => {
           SojoEvent.findOne ({ _id: o }, (err, sojo_event) => {
             sojo_event.account_id = req.body.account_id;
             sojo_event.save ();
