@@ -9,6 +9,6 @@ const corsOptions = {
 module.exports = {
   '/checkcode': {
     use: [cors (corsOptions)],
-    post: { action: 'ActivationCodeController', policy: 'gatekeeper.account.isMe' }
+    post: { action: 'ActivationCodeController' }
   }
 }
