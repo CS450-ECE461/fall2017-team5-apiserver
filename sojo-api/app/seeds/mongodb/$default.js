@@ -193,7 +193,6 @@ module.exports = (is_test) ? {} : {
 
     return callback (null, {
       profile: dab.ref ('profiles.' + i),
-      sojo_events: dab.ref ('sojo_events.' + i),
       unit: dab.ref ('units.' + i),
       lease: dab.ref ('leases.' + i),
       activation_code,
