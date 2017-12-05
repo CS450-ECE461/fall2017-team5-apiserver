@@ -10,6 +10,6 @@ module.exports = {
   '/confirm': {
     use: [cors (corsOptions)],
     policy: 'gatekeeper.auth.bearer',
-    post: { action: 'ActivationController' }
+    post: { action: 'ActivationController', policy: 'gatekeeper.account.isMe' }
   }
 }
