@@ -19,7 +19,7 @@ SojoEventController.prototype.__defineGetter__ ('accountId', () => {
   return 'AccountId';
 });
 
-SojoEventController.prototype.getAll = (args) => {
+SojoEventController.prototype.get = (args) => {
   return {
     execute: (req, res, callback) => {
       SojoEvent.find ({ account_id: { $exists: false } }, (err, sojo_event_with_no_id) => {
@@ -27,24 +27,6 @@ SojoEventController.prototype.getAll = (args) => {
           const data = sojo_event_with_no_id.concat (sojo_event_with_id);
           res.status (200).json (data);
         });
-      });
-    }
-  }
-}
-
-SojoEventController.prototype.get = (args) => {
-  return {
-    execute: (req, res, callback) => {
-      SojoEvent.findOne ({ account_id: req.params.Id }, (err, sojo_event) => {
-        if (err) {
-          res.status (400).json (err);
-        }
-        else if (!sojo_event) {
-          res.status (404).send ('SojoEvent not found');
-        }
-        else {
-          res.status (200).json (sojo_event);
-        }
       });
     }
   }
