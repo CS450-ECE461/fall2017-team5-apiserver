@@ -49,12 +49,12 @@ const EVENT_TYPE = [
 ];
 
 const LEASES = [
-  [500, new Date (2017, 12, 6), new Date (2018, 12, 6), 'One year lease'],
-  [800, new Date (2017, 12, 6), new Date (2018, 12, 6), 'One year lease'],
-  [1000, new Date (2017, 12, 6), new Date (2019, 12, 6), 'Two year lease'],
-  [1000, new Date (2017, 12, 6), new Date (2018, 12, 6), 'One year lease'],
-  [900, new Date (2017, 12, 6), new Date (2018, 12, 6), 'One year lease'],
-  [1200, new Date (2017, 12, 6), new Date (2018, 12, 6), 'One year lease'],
+  [500, new Date (), new Date (2018, 11, 6) , 'One year lease'],
+  [800, new Date (), new Date (2018, 11, 6), 'One year lease'],
+  [1000, new Date (), new Date (2019, 11, 6), 'Two year lease'],
+  [1000, new Date (), new Date (2018, 11, 6), 'One year lease'],
+  [900, new Date (), new Date (2018, 11, 6), 'One year lease'],
+  [1200, new Date (), new Date (2018, 11, 6), 'One year lease'],
 ];
 
 const UNITS = [
