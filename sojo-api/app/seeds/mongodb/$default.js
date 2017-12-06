@@ -16,7 +16,7 @@ const LOGIN_CLIENTS = {
 // User Data Boostrap
 // ------------------
 const FULL_NAMES = [
-  "Xavier Muffett",
+  "Sam Reese",
   "Hobert Zoeller",
   "Ivana Mcardell",
   "Erma Safley",
@@ -33,23 +33,23 @@ const PHONE_NUMBERS = [
   [243, 234, 5462]
 ];
 
-const SOJO_EVENTS = [
-  ['Move in', 'Move into your apt', 1],
-  ['Move in', 'Move into your apt', 1],
-  ['Maintenence', 'Maintence is coming to fix the Sink', 2],
-  ['Move in', 'Move into your apt', 1],
-  ['Move in', 'Move into your apt', 1],
-  ['Maintenance', 'Maintence is coming to fix the AC', 2]
-];
-
 const EVENT_TYPE = [
   'bill',
   'event',
   'service'
 ];
 
+const SOJO_EVENTS = [
+  ['Package Received', 'You have a package to pick up at the main office.', EVENT_TYPE[1], new Date (2017, 12, 6, 12), true],
+  ['A/C Service Appointment', 'Maintenance will be by to change air filter.', EVENT_TYPE[2], new Date (2017, 12, 17, 12), true],
+  ['A Message From Your Landlord', 'Eagle Drive will be closed for renovations. Please follow signs.', EVENT_TYPE[1], new Date (2017, 12, 4, 12), false],
+  ['Christmas Social', 'Come celebrate holiday cheer with us from 3pm-6pm in the main office!', EVENT_TYPE[1], new Date (2017, 12, 22, 12), false],
+  ['foo','bar', EVENT_TYPE[1], new Date (), false],
+  ['foo','barr', EVENT_TYPE[1], new Date (), true]
+];
+
 const LEASES = [
-  [500, new Date (2017, 1, 1), new Date (2018, 1, 1), 'One year lease'],
+  [500, new Date (2017, 12, 6), new Date (2018, 12, 6), 'One year lease'],
   [800, new Date (2017, 5, 1), new Date (2018, 5, 1), 'One year lease'],
   [1000, new Date (2017, 9, 5), new Date (2019, 9, 5), 'Two year lease'],
   [1000, new Date (2017, 1, 2), new Date (2018, 1, 2), 'One year lease'],
@@ -74,12 +74,12 @@ const COMPANY = [
 
 const ACTIVATION_CODES = [
   'djew8fe32r',
-  '5y4b5vfwef',
-  'ewfwe23523',
-  'fwrehj65uy',
-  't34tf4tt43',
-  'fef13rqwdc'
+  '5y4b5vfwef'
 ];
+
+const ACCT_PICTURE = [
+  "http://kylepeeler.io/files/samreeseavatar.png"
+]
 
 // ------------------
 
@@ -137,22 +137,33 @@ module.exports = (is_test) ? {} : {
       has_signed_lease: false,
       phone: '(' + PHONE_NUMBERS[i][0] + ') ' + PHONE_NUMBERS[i][1] + '-' + PHONE_NUMBERS[i][2],
       account_id: null,
-      account_picture_url: null,
+      account_picture_url:  (i === 0) ? ACCT_PICTURE[0] : null,
       electric_utility: dab.ref ('utilities.0'),
       cable_utility: dab.ref ('utilities.0')
     });
   }),
 
-  sojo_events: dab.times (6, (i, opts, callback) => {
-      return callback (null, {
+  sojo_events: dab.times (4, (i, opts, callback) => {
+    console.log (SOJO_EVENTS[i][4]);
+   return (SOJO_EVENTS[i][4]) ?
+      callback (null, {
         name: SOJO_EVENTS[i][0],
-        date: new Date(),
-        start_time: new Date(2017, 2, 2, 12),
-        end_time: new Date(2017, 2, 2, 4),
+        date: SOJO_EVENTS[i][3],
+        start_time: SOJO_EVENTS[i][3],
+        end_time: SOJO_EVENTS[i][3],
         description: SOJO_EVENTS[i][1],
-        type: EVENT_TYPE[SOJO_EVENTS[i][2]],
-        account_id: dab.ref ('accounts.0')
-      });
+        type: SOJO_EVENTS[i][2],
+        account_id: null
+      })
+    :
+      callback (null, {
+        name: SOJO_EVENTS[i][0],
+        date: SOJO_EVENTS[i][3],
+        start_time: SOJO_EVENTS[i][3],
+        end_time: SOJO_EVENTS[i][3],
+        description: SOJO_EVENTS[i][1],
+        type: SOJO_EVENTS[i][2],
+      })
   }),
 
   leases: dab.times (6, (i, opts, callback) => {
@@ -188,13 +199,14 @@ module.exports = (is_test) ? {} : {
     });
   }),
 
-  bootstraps: dab.times (6, (i, opts, callback) => {
-    const activation_code = ACTIVATION_CODES[i]; 
+  bootstraps: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+    const activation_code = ACTIVATION_CODES[0]; 
 
     return callback (null, {
-      profile: dab.ref ('profiles.' + i),
-      unit: dab.ref ('units.' + i),
-      lease: dab.ref ('leases.' + i),
+      profile: dab.ref ('profiles.0'),
+      unit: dab.ref ('units.0'),
+      lease: dab.ref ('leases.0'),
+      sojo_event: [dab.ref ('sojo_events.0'), dab.ref ('sojo_events.1')],
       activation_code,
       is_activated: false
     });
