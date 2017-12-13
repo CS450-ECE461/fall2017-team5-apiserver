@@ -1,8 +1,11 @@
 <h1 align="center">Getting Started</h1>
 
+# Running the server
 ```bash
-$ export CLIENT_SECRET=""
-$ export CLIENT_OBJECT_ID=""
-$ node app
+$ ./start.sh
+```
+# Testing the server
+```bash
+$ ./test.sh
 ```
 
