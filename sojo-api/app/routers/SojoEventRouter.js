@@ -2,8 +2,10 @@ module.exports = {
   '/events': {
     policy: 'gatekeeper.auth.bearer',
     resource: {
-      controller: 'SojoEventController'
+      controller: 'SojoEventController',
+      deny: ['getAll'],
     },
+    get: { action: 'SojoEventController@get' },
     '/account': {
       '/:accountId': {
         get: { action: 'SojoEventController@getAccountEvents'}

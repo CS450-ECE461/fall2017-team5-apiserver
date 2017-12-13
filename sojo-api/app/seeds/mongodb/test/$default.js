@@ -1,10 +1,10 @@
 const dab         = require ('@onehilltech/dab')
-,     gatekeeper  = require ('@onehilltech/blueprint-gatekeeper')
-,     ObjectId    = require ('@onehilltech/blueprint-mongodb').Types.ObjectId
-;
+  ,   gatekeeper  = require ('@onehilltech/blueprint-gatekeeper')
+  ,   ObjectId    = require ('@onehilltech/blueprint-mongodb').Types.ObjectId
+  ;
 
 const scopes = [
-  ["*"],
+  ['*'],
   [],
   []
 ];
@@ -12,6 +12,73 @@ const scopes = [
 const LOGIN_CLIENTS = {
   'ember-sojo-frontend': 0,
 };
+
+// User Data Boostrap
+// ------------------
+const FULL_NAMES = [
+  "Xavier Muffett",
+  "Hobert Zoeller",
+  "Ivana Mcardell",
+  "Erma Safley",
+  "Octavio Sas",
+  "Deedra Carrington"
+];
+
+const PHONE_NUMBERS = [
+  [303, 522, 8897],
+  [456, 363, 3283],
+  [673, 454, 1111],
+  [303, 585, 2356],
+  [234, 653, 2523],
+  [243, 234, 5462]
+];
+
+const SOJO_EVENTS = [
+  ['Move in', 'Move into your apt', 1],
+];
+
+const EVENT_TYPE = [
+  'bill',
+  'event',
+  'service'
+];
+
+const LEASES = [
+  [500, new Date (), new Date (2018, 11, 6) , 'One year lease'],
+  [800, new Date (), new Date (2018, 11, 6), 'One year lease'],
+  [1000, new Date (), new Date (2019, 11, 6), 'Two year lease'],
+  [1000, new Date (), new Date (2018, 11, 6), 'One year lease'],
+  [900, new Date (), new Date (2018, 11, 6), 'One year lease'],
+  [1200, new Date (), new Date (2018, 11, 6), 'One year lease'],
+];
+
+const UNITS = [
+  ['A', '221', '123 Foobar Ln.', 'Indianapolis', 'Indiana', 46112 ],
+  ['B', '221', '123 Foobar Ln.', 'Indianapolis', 'Indiana', 46112 ],
+  ['F', '324', '123 Foobar Ln.', 'Indianapolis', 'Indiana', 46112 ],
+  ['B', '366', '123 Foobar Ln.', 'Indianapolis', 'Indiana', 46112 ],
+  ['H', '354', '123 Foobar Ln.', 'Indianapolis', 'Indiana', 46112 ],
+  ['A', '344', '123 Foobar Ln.', 'Indianapolis', 'Indiana', 46112 ],
+];
+
+const COMPANY = [
+  ['att'],
+  ['comcast'],
+  ['brighthouse']
+];
+
+const ACTIVATION_CODES = [
+  'djew8fe32r',
+  '5y4b5vfwef',
+  'ewfwe23523',
+  'fwrehj65uy',
+  't34tf4tt43',
+  'fef13rqwdc'
+];
+
+// ------------------
+
+const is_test = (process.env.NODE_ENV === 'test');
 
 module.exports = { 
   clients: dab.times (1, (i, opts, callback) => {
@@ -42,6 +109,7 @@ module.exports = {
     });
   }),
 
+
   user_tokens: dab.map (dab.get ('accounts'), (account, opts, callback) => {
     const clientIndex = LOGIN_CLIENTS[account.username];
   
@@ -57,117 +125,73 @@ module.exports = {
     return callback (null, {client: client._id});
   }),
 
-  profiles: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+  profiles: dab.times (6, (i, opts, callback) => {
     return callback (null, {
-      _id: new ObjectId ('999999999999999999999999'),
-      full_name: 'Kyle Peeler',
+      full_name: FULL_NAMES[i],
       has_bill_pay_setup: false,
       has_signed_lease: false,
-      phone: '(777) 555-3333',
-      account_id: account._id,
-      account_picture_url: 'http://randomimage.png',
-      electric_utility: new ObjectId,
-      cable_utility: new ObjectId
+      phone: '(' + PHONE_NUMBERS[i][0] + ') ' + PHONE_NUMBERS[i][1] + '-' + PHONE_NUMBERS[i][2],
+      account_id: (i === 0) ? dab.ref ('accounts.0') : null,
+      account_picture_url: null,
+      electric_utility: dab.ref ('utilities.0'),
+      cable_utility: dab.ref ('utilities.0')
     });
   }),
 
-  sojo_events: dab.times (2, (i, opts, callback) => {
-    var is_even = i % 2 === 0;
-
-    if (is_even) {
+  sojo_events: dab.times (1, (i, opts, callback) => {
       return callback (null, {
-        name: 'Albino Peach Eating Contest',
+        name: SOJO_EVENTS[i][0],
         date: new Date(),
         start_time: new Date(2017, 2, 2, 12),
         end_time: new Date(2017, 2, 2, 4),
-        description: 'Cookout Garden',
-        type: 'Maintenance request',
-        account_id: (dab.ref ('accounts.0'))
+        description: SOJO_EVENTS[i][1],
+        type: EVENT_TYPE[SOJO_EVENTS[i][2]],
+        account_id: dab.ref ('accounts.0')
       });
-    }
-    else {
-      return callback (null, {
-        name: 'Albino Peach Eating Contest',
-        date: new Date(),
-        start_time: new Date(2017, 2, 2, 12),
-        end_time: new Date(2017, 2, 2, 4),
-        description: 'Cookout Garden',
-        type: 'Apartment Event'
-      })
-    }
   }),
 
-
-  leases: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+  leases: dab.times (6, (i, opts, callback) => {
     return callback (null, {
-      _id: new ObjectId ('777777777777777777777777'),
-      rent_amount: 500,
-      lease_type: 'One Year Lease',
-      start_date: new Date(2017, 1, 1),
-      end_date: new Date(2018, 1, 1),
-      account_id: account._id
+      rent_amount: LEASES[i][0],
+      start_date: LEASES[i][1],
+      end_date: LEASES[i][2],
+      lease_type: LEASES[i][3],
+      account_id: (i === 0) ? dab.ref ('accounts.0') : null
     });
   }),
 
-  units: dab.map (dab.get ('accounts'), (account, opts, callback) => {
+  units: dab.times (6, (i, opts, callback) => {
     return callback (null, {
-      _id: new ObjectId ('444444444444444444444444'),
-      unit_index: 'b',
-      building_index: '221',
-      address: '1234 foobar drive',
-      city: 'Indianapolis',
-      state: 'Indiana',
-      zip: 45678,
+      unit_index: UNITS[i][0],
+      building_index: UNITS[i][1],
+      address: UNITS[i][2],
+      city: UNITS[i][3],
+      state: UNITS[i][4],
+      zip: UNITS[i][5],
       maintenance_email: 'main@no-reply.com',
       landlord_email: 'landlord@no-reply.com',
-      account_id: account._id
+      account_id: (i === 0) ? dab.ref ('accounts.0') : null
     });
   }),
 
   utilities: dab.map (dab.get ('accounts'), (account, opts, callback) => {
-    let company_name = 'att';
     return callback (null, {
-      _id: new ObjectId ('222222222222222222222222'),
-      company_name,
-      url: company_name + '.com',
-      day_due: 16,
-      account_id: account._id
+      company_name: COMPANY[0],
+      url: COMPANY[0] + '.com',
+      due_date: new Date(),
+      account_id: null,
     });
   }),
 
-  payments: dab.times (2, (i, opts, callback) => {
-    var is_even = i % 2 === 0;
+  bootstraps: dab.times (6, (i, opts, callback) => {
+    const activation_code = ACTIVATION_CODES[i]; 
 
-    if (is_even) {
-      return callback (null, {
-        account_id: dab.ref ('accounts.0'),
-        amount_paid: 1000,
-        date_paid: new Date(),
-        payment_type: 'lease',
-        payment_object: dab.ref ('leases.0')
-      });
-    }
-    else {
-      return callback (null, {
-        account_id: dab.ref ('accounts.0'),
-        amount_paid: 1000,
-        date_paid: new Date(),
-        payment_type: 'utility',
-        payment_object: dab.ref ('utilities.0')
-      });
-    }
-  }),
-
-  persistent_settings: dab.map (dab.get ('accounts'), (account, opts, callback) => {
     return callback (null, {
-      _id: new ObjectId ('666666666666666666666666'),
-      account_id: account._id,
-      week_before_reminder: false,
-      day_before_reminder: false,
-      property_reminder: false,
-      emergency_reminder: false,
-      event_reminder: false,
-      request_reminder: false
-    })
+      profile: dab.ref ('profiles.' + i),
+      unit: dab.ref ('units.' + i),
+      lease: dab.ref ('leases.' + i),
+      activation_code,
+      is_activated: false
+    });
   })
 };

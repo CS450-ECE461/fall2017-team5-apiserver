@@ -13,7 +13,7 @@
 ```sh
 $ npm install -g @onehilltech/blueprint-cli
 ```
-[Documentation..sorta](https://github.com/onehilltech/blueprint/wiki)
+[Documentation](https://github.com/onehilltech/blueprint/wiki)
 
 ## Mongo
 ###### Installation
