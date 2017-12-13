@@ -40,7 +40,7 @@ PaymentController.prototype.get = (args) => {
   }
 }
 
-PaymentController.prototype.getAllRentPayments = () => {
+PaymentController.prototype.getAllRentPayments = (args) => {
   return {
     execute: (req, res, callback) => {
       Payment.find ({
@@ -61,10 +61,10 @@ PaymentController.prototype.getAllRentPayments = () => {
   }
 }
 
-PaymentController.prototype.getOneRentPayment = () => {
+PaymentController.prototype.getOneRentPayment = (args) => {
   return {
     execute: (req, res, callback) => {
-      Payment.find ({
+      Payment.findOne ({
         account_id: req.params.resourceId,
         payment_type: 'lease',
         payment_object: req.params.leaseId
@@ -83,7 +83,7 @@ PaymentController.prototype.getOneRentPayment = () => {
   }
 }
 
-PaymentController.prototype.getAllUtilityPayments = () => {
+PaymentController.prototype.getAllUtilityPayments = (args) => {
   return {
     execute: (req, res, callback) => {
       Payment.find ({
@@ -104,10 +104,10 @@ PaymentController.prototype.getAllUtilityPayments = () => {
   }
 }
 
-PaymentController.prototype.getOneUtilityPayment = () => {
+PaymentController.prototype.getOneUtilityPayment = (args) => {
   return {
     execute: (req, res, callback) => {
-      Payment.find ({
+      Payment.findOne ({
         account_id: req.params.resourceId,
         payment_type: 'utility',
         payment_object: req.params.utilityId

@@ -17,7 +17,7 @@ PersistentSettingController.prototype.__defineGetter__ ('resourceId', () => {
 PersistentSettingController.prototype.get = (args) => {
   return {
     execute: (req, res, callback) => {
-      PersistentSetting.find ({ account_id: req.params.Id }, (err, settings) => {
+      PersistentSetting.findOne ({ account_id: req.params.Id }, (err, settings) => {
         if(err) {
           res.status (400).json (err);
         }

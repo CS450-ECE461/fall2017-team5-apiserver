@@ -11,7 +11,7 @@ var schema = new mongodb.Schema ({
   phone               : {type: String,     required: true,  trim: true},
   has_bill_pay_setup  : {type: Boolean,    required: false, trim: false},
   has_signed_lease    : {type: Boolean,    required: false, trim: false},
-  account_id          : {type: ObjectId,   required: true,  trim: false},
+  account_id          : {type: ObjectId,   required: false, trim: false},
   account_picture_url : {type: String,     required: false, trim: true},
   electric_utility    : {type: ObjectId,   required: false, trim: false},
   cable_utility       : {type: ObjectId,   required: false, trim: false}
