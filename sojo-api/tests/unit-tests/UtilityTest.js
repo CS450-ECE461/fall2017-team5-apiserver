@@ -17,7 +17,7 @@ describe ('Utility', function () {
               _id: utility0._id,
               company_name: utility0.company_name,
               url: utility0.url,
-              day_due: utility0.day_due,
+              due_date: utility0.due_date,
               account_id: utility0.account_id,
               __v: utility0.__v
             }
